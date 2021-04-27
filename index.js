@@ -20,14 +20,15 @@ var FORMATS = {
   'zebkit': {template: 'zebkit.template', extension: 'js', trim: false},
   'cocos2d': {template: 'cocos2d.template', extension: 'plist', trim: false},
   'cocos2d-v3': {template: 'cocos2d-v3.template', extension: 'plist', trim: false},
-  'css': {template: 'css.template', extension: 'css', trim: false}
+  'css': {template: 'css.template', extension: 'css', trim: false},
+  'domkit': {template: 'domkit.template', extension: 'scss', trim: false},
 };
 
 if (!module.parent) {
   var argv = optimist.usage('Usage: $0 [options] <files>')
     .options('f', {
       alias: 'format',
-      describe: 'format of spritesheet (starling, sparrow, json, yaml, pixi.js, easel.js, egret, zebkit, cocos2d)',
+      describe: 'format of spritesheet (starling, sparrow, json, yaml, pixi.js, easel.js, egret, zebkit, cocos2d, domkit)',
       default: ''
     })
     .options('cf', {
@@ -153,7 +154,7 @@ if (!module.parent) {
  * @param {function} callback
  */
 function generate(files, options, callback) {
-  files = Array.isArray(files) ? files : glob.sync(files);
+  files = glob.sync(files[0]);
   if (files.length == 0) return callback(new Error('no files specified'));
 
   options = options || {};
@@ -197,7 +198,7 @@ function generate(files, options, callback) {
 
 
   if (!fs.existsSync(options.path) && options.path !== '') fs.mkdirSync(options.path);
-
+  
   async.waterfall([
     function (callback) {
       generator.trimImages(files, options, callback);

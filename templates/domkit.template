@@ -1,0 +1,9 @@
+{{#files}}
+.icon-{{{cssName}}} {
+    src: tile("{{{spritesheetName}}}.png",{{spritesheetWidth}},{{spritesheetHeight}});
+    tile-pos: {{x}} {{y}};
+    width: {{width}};
+    height: {{height}};
+}
+
+{{/files}}
