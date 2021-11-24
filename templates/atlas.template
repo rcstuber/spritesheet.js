@@ -1,0 +1,7 @@
+{{{prefix}}}{{spritesheetName}}.png
+{{#files}}
+{{{cssName}}}
+  xy: {{x}}, {{y}}
+  size: {{width}}, {{height}}
+  orig: {{width}}, {{height}}
+{{/files}}

@@ -21,7 +21,8 @@ var FORMATS = {
   'cocos2d': {template: 'cocos2d.template', extension: 'plist', trim: false},
   'cocos2d-v3': {template: 'cocos2d-v3.template', extension: 'plist', trim: false},
   'css': {template: 'css.template', extension: 'css', trim: false},
-  'domkit': {template: 'domkit.template', extension: 'scss', trim: false},
+  'atlas': {template: 'atlas.template', extension: 'atlas', trim: false},
+  'domkit': {template: 'domkit.template', extension: 'styl', trim: false},
 };
 
 if (!module.parent) {
@@ -186,7 +187,7 @@ function generate(files, options, callback) {
       name = item.substring(0, item.lastIndexOf("."));
     }
     else {
-      name = options.prefix + resolvedItem.substring(resolvedItem.lastIndexOf(path.sep) + 1, resolvedItem.lastIndexOf('.'));
+      name = resolvedItem.substring(resolvedItem.lastIndexOf(path.sep) + 1, resolvedItem.lastIndexOf('.'));
     }
     return {
       index: index,

@@ -1,9 +1,8 @@
-{{#files}}
-.icon-{{{cssName}}} {
-    src: tile("{{{spritesheetName}}}.png",{{spritesheetWidth}},{{spritesheetHeight}});
-    tile-pos: {{x}} {{y}};
-    width: {{width}};
-    height: {{height}};
-}
 
-{{/files}}
+get_tile(name) {
+    {{#files}}
+        if name == replace('icon_','','{{{cssName}}}') {
+            src: tile("{{{prefix}}}{{{spritesheetName}}}.png",{{x}},{{y}},{{width}},{{height}})
+        }
+    {{/files}}
+}
